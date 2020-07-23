@@ -1,0 +1,177 @@
+//babel serve para pegar o codigo antigo e fazer conque qualquer servidor entenda
+
+//presets serve para o babel identificar e funcionar em qual quer outro "programa" como react /node / react native
+
+
+// A declaração const cria uma variável cujo o valor é fixo, ou seja, 
+//uma constante somente leitura. Isso não significa que o valor é imutável, apenas que a variável constante não pode ser alterada ou retribuída
+
+//4° AULA
+class List {
+  //podeos fazer ações para inicar uma variavel
+  constructor(){
+    this.data = [];
+  }
+
+  add(data){
+    this.data.push(data);
+    console.log(this.data);
+  }
+}
+
+class TodoList extends List{
+  constructor(){
+    super();
+
+    this.usuario = 'Diego';
+  }
+
+  mostraUsuario() {
+    console.log(this.usuario);
+  }
+
+}
+
+const MinhasLista = new TodoList();
+
+document.getElementById('novotodo').onclick = function (){
+  MinhasLista.add('novo todo');
+}
+
+//5° AULA
+const arr =[1,3,4,5,6,7,8,9];
+
+//map retornar uma informação
+const newArr = arr.map(function(item){
+return item = index;
+});
+
+console.log(newArr);
+
+const sum = arr.reduce(function(total,next){
+  return total + next ;
+});
+
+console.log(sum);
+
+const filter = arr.filter(function(item){
+  return item % 2 === 0 ;
+});
+
+console.log(filter);
+
+const find = arr.find(function(item){
+  return item === 2;
+});
+
+//6° AULA
+
+const arr = [1,3,4,5,6];
+
+const newArr = arr.map(item =>  item * 2);
+
+console.log(newArr);
+
+const teste = () => ({ nome: 'Diego'});
+
+console.log(teste());
+
+//7° AULA
+//valores de função
+
+const soma = (a = 3,b = 9) => a + b;
+
+console.log(soma(1));
+console.log(soma());
+
+//8° AULA
+const usuario = {
+  nome: "João",
+  idade: 23,
+  endereco: {
+    ciade: 'Rio do Sul',
+    estado: 'SC',
+  },
+};
+
+function mostraNome({ nome, idade}) {
+  console.log(nome, idade);
+}
+
+mostraNome(usuario);
+
+//9° AULA
+//REST serve para pegar o resto das propriedades
+
+function soma(a,b, ...params){
+  return params;
+}
+
+console.log(soma(1,2,3,4,5,6,7));
+
+// SPREAD repassar as informações de um objeto ou um arry
+
+const usuario1 = {
+  nome: 'Diego',
+  idade: 23,
+  empresa: 'Rocketseat',
+};
+
+const usuario2 = { ...usuario1, nome: 'Gabriel'};
+
+console.log(usuario2);
+
+//10° AULA 
+
+const nome = "João";
+const idade = "18";
+
+console.log(`Meu nome é ${nome} e tenho ${idade} anos.`);
+
+//11° AULA
+//sintaxe curta de obejto
+const nome = "João";
+const idade = "18";
+
+const usuario = {
+nome,
+idade,
+empresa: "Rocktseat",
+};
+
+console.log(usuario)
+
+//12° AULA
+//async e await vai ajuadar em questão da parte da programação assincrona
+
+const minhaPromise = () => new Promise((resolve, reject) =>{
+setTimeout(() => { resolve('OK'), 2000});
+});
+
+async function executaPromise() {
+  console.log(await minhaPromise());
+  console.log(await minhaPromise());
+  console.log(await minhaPromise());
+}
+
+//13° AULA 
+
+import axios from 'axios';
+
+class api {
+  static async getUserInfo(username) {
+    try{
+      const response = await axios.get(`http://api.github.com/users/${username}`)
+     
+          
+    console.log(response);
+    } catch (err) {
+      console.warn('Erro na API')
+    }
+  }
+}
+
+api.getUserInfo('JVMarks')
+
+
+//14° AULA
